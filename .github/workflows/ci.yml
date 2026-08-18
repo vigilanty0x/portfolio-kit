@@ -82,7 +82,7 @@ jobs:
             build-metrics-collector)
               build-metrics import-event "$GITHUB_WORKSPACE/packages/build-metrics-collector/examples/commit-event.json" --store "$RUNNER_TEMP/build-events.jsonl"
               build-metrics ingest-junit "$GITHUB_WORKSPACE/packages/build-metrics-collector/examples/junit.xml" --store "$RUNNER_TEMP/build-events.jsonl" --project synthetic-demo --suite unit
-              build-metrics artifact "$GITHUB_WORKSPACE/packages/build-metrics-collector/examples/artifact.txt" --root "$GITHUB_WORKSPACE/packages/build-metrics-collector" --store "$RUNNER_TEMP/build-events.jsonl" --project synthetic-demo --kind demo
+              build-metrics artifact examples/artifact.txt --root "$GITHUB_WORKSPACE/packages/build-metrics-collector" --store "$RUNNER_TEMP/build-events.jsonl" --project synthetic-demo --kind demo
               build-metrics collect-git "$GITHUB_WORKSPACE" --store "$RUNNER_TEMP/build-events.jsonl" --project synthetic-demo --max-commits 20
               build-metrics replay "$RUNNER_TEMP/build-events.jsonl" --json
               build-metrics summarize "$RUNNER_TEMP/build-events.jsonl" --project synthetic-demo --format json --output "$RUNNER_TEMP/build-metrics.json"
